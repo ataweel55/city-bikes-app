@@ -1,0 +1,40 @@
+<mvc:View 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns:core="sap.ui.core" 
+  xmlns="sap.m" 
+  xmlns:tnt="sap.tnt" controllerName="com.sovanta.city_bikes.controller.App" displayBlock="true">
+  <tnt:ToolPage sideExpanded="false" id="toolPage">
+    <tnt:header>
+      <tnt:ToolHeader>
+        <Button icon="sap-icon://menu2" visible="{= !!${user>/email} === true}" type="Transparent" press="onSideNavButtonPress">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" />
+          </layoutData>
+        </Button>
+        <ToolbarSpacer />
+        <Text text="{/title}" wrapping="false">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="Disappear" />
+          </layoutData>
+        </Text>
+        <ToolbarSpacer />
+        <Button visible="{= !!${user>/email} === true}" text="{user>/email}" type="Transparent" press="onUserNamePress">
+          <layoutData>
+            <OverflowToolbarLayoutData priority="NeverOverflow" />
+          </layoutData>
+        </Button>
+      </tnt:ToolHeader>
+    </tnt:header>
+    <tnt:sideContent>
+      <tnt:SideNavigation visible="{= !!${user>/email} === true}" expanded="false" itemSelect="onItemSelect">
+        <tnt:NavigationList items="{path: '/navigation'}">
+          <tnt:NavigationListItem visible="{visible}" text="{title}" icon="{icon}" enabled="{= !!${user>/} === true}" key="{key}">
+          </tnt:NavigationListItem>
+        </tnt:NavigationList>
+      </tnt:SideNavigation>
+    </tnt:sideContent>
+    <tnt:mainContents >
+      <App id="mainContents" />
+    </tnt:mainContents>
+  </tnt:ToolPage>
+</mvc:View>

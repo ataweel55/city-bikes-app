@@ -1,0 +1,80 @@
+<mvc:View controllerName="com.sovanta.city_bikes.controller.Ride"
+  xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:l="sap.ui.layout"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:vbm="sap.ui.vbm" height="100%" displayBlock="true">
+  <Page showHeader="false">
+    <l:FixFlex visible="{= !!${ride>/trip} === true}" fixFirst="false" class="fixFlexVertical">
+      <l:fixContent>
+        <VBox justifyContent="Buttom" height="25pc" class="sapUiSmallMarginBeginEnd">
+          <HBox justifyContent="Center" class="sapUiSmallMarginBottom">
+            <NumericContent animateTextChange="false" visible="{= ${/stats/timer}>=3600}" truncateValueTo="5" scale="{i18n>hrs}" value="{path: '/stats/timer',formatter: '.formatter.formatterH'}:{path: '/stats/timer',formatter: '.formatter.formatterM'}" />
+            <NumericContent animateTextChange="false" visible="{= ${/stats/timer}&lt;3600}" truncateValueTo="5" scale="{i18n>min}" value="{path: '/stats/timer',formatter: '.formatter.formatterM'}:{path: '/stats/timer',formatter: '.formatter.formatterS'}" />
+            <NumericContent scale="{path:'/stats/distance', formatter: '.distanceFormatter.distanceUnit'}" value="{path:'/stats/distance', formatter: '.distanceFormatter.distanceToBike'}" />
+        </HBox>
+          <List binding="{/stats}" backgroundDesign="Transparent">
+            <CustomListItem>
+              <HBox>
+                <core:Icon size="1.5rem" src="sap-icon://fa/startFlag" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTopBottom">
+                  <Label text="{i18n>startingAddress}"/>
+                  <BusyIndicator visible="{= !!!${fromAddress}}" />
+                  <Text visible="{= !!${fromAddress}}" text="{fromAddress}"/>
+                </VBox>
+              </HBox>
+            </CustomListItem>
+            <CustomListItem>
+              <HBox>
+                <core:Icon size="1.5rem" src="sap-icon://fa/tacho" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTopBottom">
+                  <Label text="{i18n>averageSpeed}"/>
+                  <Text text="{avgSpeed} km/h"/>
+                </VBox>
+              </HBox>
+            </CustomListItem>
+            <CustomListItem>
+              <HBox>
+                <core:Icon size="1.5rem" src="sap-icon://competitor" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTopBottom">
+                  <Label text="{i18n>topSpeed}"/>
+                  <Text text="{topSpeed} km/h"/>
+                </VBox>
+              </HBox>
+            </CustomListItem>
+            <CustomListItem>
+              <HBox>
+                <core:Icon size="1.7rem" src="sap-icon://fa/fire" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                <VBox class="sapUiTinyMarginBegin sapUiTinyMarginTopBottom">
+                  <Label text="{i18n>calories}"/>
+                  <Text text="{caloriesBurned} kcal"/>
+                </VBox>
+              </HBox>
+            </CustomListItem>
+          </List>
+          <FlexBox alignItems="Center" justifyContent="SpaceAround" class="sapUiSmallMarginTopBottom">
+            <Button text="{i18n>Lockdown}" width="150px" type="Emphasized" icon="sap-icon://locked" press="onLockPressed" class="sapUiSmallMarginEnd"/>
+            <Button text="{i18n>Pausedown}" width="150px" type="Emphasized" icon="sap-icon://media-pause" press="onPausePressed"/>
+          </FlexBox>
+        </VBox>
+      </l:fixContent>
+      <l:flexContent class="sapUiTinyMarginBegin sapUiTinyMarginTopBottom">
+        <vbm:GeoMap id="vbi" height="100%" width="100%" enableAnimation="true" initialZoom="15" initialPosition="8.677387;49.404794;0" disableZoom="true" disablePan="true">
+          <vbm:resources>
+            <vbm:Resource name="user_circle" src="css/locateMe.png"></vbm:Resource>
+          </vbm:resources>
+          <vbm:vos>
+            <vbm:Spots>
+              <vbm:Spot position="{/user/lon};{/user/lat};10" image="user_circle" scale="0.2;0.2;0.2" alignment="0"></vbm:Spot>
+              <vbm:Spot position="{/rideStart}" alignment="0" icon="sap-icon://fa/startFlag" contentColor="rgb(255,255,255)"></vbm:Spot>
+            </vbm:Spots>
+          </vbm:vos>
+          <vbm:Routes>
+            <vbm:Route position="{/route}" end="0" start="0" color="rgba(92,186,230,1.0)" colorBorder="rgb(255,255,255)" hotDeltaColor="RHLSA(0,1,1,0.6)" />
+          </vbm:Routes>
+        </vbm:GeoMap>
+      </l:flexContent>
+    </l:FixFlex>
+  </Page>
+</mvc:View>

@@ -1,0 +1,8 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ActionSheet showCancelButton="true" cancelButtonText="{i18n>userMenuCancel}">
+		<Button visible="{/activeTrip}" icon="sap-icon://fa/problem" text="{i18n>reportButton}" press= "onReport" />
+		<Button icon="sap-icon://log" text="{i18n>userMenuLogout}" press="onLogoutPress" />
+	</ActionSheet>
+</core:FragmentDefinition>

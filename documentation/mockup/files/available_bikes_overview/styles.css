@@ -1,0 +1,524 @@
+﻿body {
+  margin:0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  width:374px;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+}
+#base {
+  position:absolute;
+  z-index:0;
+}
+#u7 {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:0px;
+  height:0px;
+}
+#u8_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:375px;
+  height:48px;
+  background:inherit;
+  background-color:rgba(47, 60, 72, 1);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  color:#CAE4FB;
+}
+#u8 {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:375px;
+  height:48px;
+  color:#CAE4FB;
+}
+#u8_text {
+  border-width:0px;
+  position:absolute;
+  left:2px;
+  top:16px;
+  width:371px;
+  word-wrap:break-word;
+}
+#u9_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:77px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-size:14px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u9 {
+  border-width:0px;
+  position:absolute;
+  left:294px;
+  top:4px;
+  width:77px;
+  height:40px;
+  font-size:14px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u9_div.mouseOver {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:77px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(81, 104, 125, 1);
+  border:none;
+  border-radius:3px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-size:14px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u9.mouseOver {
+}
+#u9_div.mouseDown {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:77px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(145, 200, 246, 1);
+  border:none;
+  border-radius:3px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-size:14px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u9.mouseDown {
+}
+#u9_div.selected {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:77px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(145, 200, 246, 1);
+  border:none;
+  border-radius:3px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-size:14px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u9.selected {
+}
+#u9_text {
+  border-width:0px;
+  position:absolute;
+  left:11px;
+  top:12px;
+  width:55px;
+  white-space:nowrap;
+}
+#u10_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:40px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:22px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u10 {
+  border-width:0px;
+  position:absolute;
+  left:4px;
+  top:4px;
+  width:40px;
+  height:40px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:22px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u10_div.mouseOver {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:40px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(81, 104, 125, 1);
+  border:none;
+  border-radius:3px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:22px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u10.mouseOver {
+}
+#u10_div.mouseDown {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:40px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(145, 200, 246, 1);
+  border:none;
+  border-radius:3px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:22px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u10.mouseDown {
+}
+#u10_div.selected {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:40px;
+  height:40px;
+  background:inherit;
+  background-color:rgba(145, 200, 246, 1);
+  border:none;
+  border-radius:3px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:22px;
+  color:#CAE4FB;
+  text-align:center;
+}
+#u10.selected {
+}
+#u10_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:7px;
+  width:40px;
+  word-wrap:break-word;
+}
+#u11_img {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:376px;
+  height:620px;
+}
+#u11 {
+  border-width:0px;
+  position:absolute;
+  left:-1px;
+  top:48px;
+  width:376px;
+  height:620px;
+  opacity:0.7;
+}
+#u11_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:0px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u12_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:40px;
+  height:43px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:36px;
+}
+#u12 {
+  border-width:0px;
+  position:absolute;
+  left:285px;
+  top:106px;
+  width:40px;
+  height:43px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:36px;
+}
+#u12_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:40px;
+  word-wrap:break-word;
+}
+#u13_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:42px;
+  height:44px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:36px;
+}
+#u13 {
+  border-width:0px;
+  position:absolute;
+  left:172px;
+  top:299px;
+  width:42px;
+  height:44px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:36px;
+}
+#u13_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:42px;
+  word-wrap:break-word;
+}
+#u14_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  height:38px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u14 {
+  border-width:0px;
+  position:absolute;
+  left:326px;
+  top:54px;
+  width:38px;
+  height:38px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u14_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  word-wrap:break-word;
+}
+#u15_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  height:38px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u15 {
+  border-width:0px;
+  position:absolute;
+  left:155px;
+  top:403px;
+  width:38px;
+  height:38px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u15_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  word-wrap:break-word;
+}
+#u16_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  height:38px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u16 {
+  border-width:0px;
+  position:absolute;
+  left:46px;
+  top:106px;
+  width:38px;
+  height:38px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u16_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  word-wrap:break-word;
+}
+#u17_div {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  height:38px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u17 {
+  border-width:0px;
+  position:absolute;
+  left:23px;
+  top:318px;
+  width:38px;
+  height:38px;
+  font-family:'SAP-icons';
+  font-weight:400;
+  font-style:normal;
+  font-size:32px;
+}
+#u17_text {
+  border-width:0px;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:38px;
+  word-wrap:break-word;
+}

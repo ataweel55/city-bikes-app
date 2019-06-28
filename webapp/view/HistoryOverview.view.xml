@@ -1,0 +1,38 @@
+<mvc:View
+	controllerName="com.sovanta.city_bikes.controller.HistoryOverview"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+  <Page showHeader="false" visible="{= !!!${/trips} &amp;&amp; !${/isLoading}}">
+    <core:Fragment fragmentName="com.sovanta.city_bikes.view.NoData" type="XML" />
+  </Page>
+
+  <Page showHeader="false" visible="{= !!${/trips} &amp;&amp; !${/isLoading}}">
+    <Panel>
+			<headerToolbar>
+					<Toolbar height="3rem" class="sapUiSmallMarginBeginEnd sapUiTinyMarginTop">
+						<Title text="{i18n>historyHeader}" titleStyle="H2"/>
+					</Toolbar>
+			</headerToolbar>
+      <List items="{/trips}" backgroundDesign="Transparent">
+				<items class="sapUiSmallMarginBottom">
+					<ObjectListItem title="Trip {id}"
+						type="Active" press="onListItemPress" number="{path:'distance', formatter: '.distanceFormatter.distanceToBike'}" numberUnit="{path:'distance', formatter: '.distanceFormatter.distanceUnit'}">
+						<attributes>
+							<ObjectAttribute text="{id}" visible="false" />
+              <ObjectAttribute text="{parts:
+                                     [{path: 'created_at', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-ddTHH:mm:SS.sssZ'}, pattern: 'dd. MMM yyyy '}},
+                                     {path: 'i18n>fromSmall'},
+                                     {path: 'created_at', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-ddTHH:mm:SS.sssZ'}, pattern: 'HH:mm - '}},
+                                     {path: 'updated_at', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-ddTHH:mm:SS.sssZ'}, pattern: 'HH:mm'}}
+								                     ]}" />
+							<ObjectAttribute text="{i18n>from} {fromAddress}" />
+							<ObjectAttribute text="{i18n>to} {toAddress}" />
+						</attributes>
+					</ObjectListItem>
+				</items>
+			</List>
+		</Panel>
+	</Page>
+</mvc:View>

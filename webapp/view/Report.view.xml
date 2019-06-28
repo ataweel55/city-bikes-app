@@ -1,0 +1,24 @@
+<mvc:View controllerName="com.sovanta.city_bikes.controller.Report"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m">
+	<Page showHeader="false">
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Text text="{i18n>reportingTop} {/bikeId}"/>
+		</Panel>
+		<List id="prolemList" items="{/problems}" mode="MultiSelect" includeItemInSelection="true">
+      <StandardListItem id="problemListCon" selected="{selected}" title="{Name}" type="Active"/>
+		</List>
+		<Panel width="auto" class="sapUiResponsiveMargin">
+			<Text text="{i18n>reportingInfo}"/>
+			<TextArea maxLength="40" width="100%" growing="true" enabled="true" value="{/reportDescription}" placeholder="{i18n>reportingPlaceholder}" rows="5"/>
+			<FlexBox justifyContent="Center">
+				<items>
+					<Button text="{i18n>cancel}" icon="sap-icon://decline" press="cancelReport" class="sapUiSmallMarginEnd"></Button>
+					<Button id="reportSend" text="{i18n>send}" icon="sap-icon://paper-plane" press="sendReport" class="sapUiSmallMarginEnd"></Button>
+				</items>
+			</FlexBox>
+		</Panel>
+	</Page>
+</mvc:View>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>City Bikes</title>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8">
+
+  <script src="polyfill.min.js"></script>
+  <script id="sap-ui-bootstrap" type="text/javascript" src="resources/sap-ui-core.js" data-sap-ui-theme="sap_belize" data-sap-ui-libs="sap.m, sap.tnt"
+    data-sap-ui-bindingSyntax="complex" data-sap-ui-compatVersion="edge" data-sap-ui-preload="async" data-sap-ui-resourceroots='{"com.sovanta.city_bikes": "./"}'>
+    </script>
+  <script>
+    sap.ui.getCore().attachInit(function () {
+      sap.ui.require(
+        ['sap/ui/core/Component', 'sap/ui/core/ComponentContainer'],
+        function (Component, ComponentContainer) {
+          sap.ui
+            .component({
+              name: 'com.sovanta.city_bikes',
+              async: true
+            })
+            .then(function (oComponent) {
+              new ComponentContainer({
+                component: oComponent
+              }).placeAt('root');
+            });
+        }
+      );
+    });
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNn0vusp2UwVhwTpuWSnd0nSuNtCPRYAE">
+  </script>
+</head>
+
+<body class="sapUiBody" id="root" role="application"></body>
+
+</html>

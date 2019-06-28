@@ -1,0 +1,87 @@
+<mvc:View controllerName="com.sovanta.city_bikes.controller.AvailableBikes" 
+  xmlns="sap.m" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns:core="sap.ui.core" 
+  xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" 
+  xmlns:l="sap.ui.layout" 
+  xmlns:viz="sap.viz.ui5.controls" 
+  xmlns:vbm="sap.ui.vbm" height="100%" displayBlock="true">
+  <Page showHeader="false">
+    <l:FixFlex fixFirst="false" class="fixFlexVertical">
+      <l:fixContent>
+        <VBox visible="{= !!${/selectedBike} || !!${/reservation}}">
+          <HBox visible="{= !!${/reservation}}" id="reservationPanel" width="auto" alignItems="Center" justifyContent="SpaceBetween">
+            <Title class="sapUiSmallMargin" text="{i18n>bike} {/reservation/bikeId}" titleStyle="H2"/>
+            <Label visible="{= !!${/reminderTimer} }" text="{path: '/reminderTimer', formatter:'.timeFormatter.formatterM'}:{path: '/reminderTimer',formatter:'.timeFormatter.formatterS'}" design="Bold"/>
+            <Button class="sapUiSmallMargin" icon="sap-icon://fa/problem" type="Transparent" app:bikeId="{/reservation/bikeId}" press="onReportPressed" />
+          </HBox>
+          <HBox visible="{= !!${/reservation}}" width="auto" alignItems="Center" justifyContent="Center">
+            <Button class="sapUiSmallMarginBottom" type="Emphasized" text="{i18n>rent}" app:bikeId="{/reservation/bikeId}" press="onBookPressed" width="200px" enabled="{parts:[{path: '/reservation/bike'}, {path: 'positions>/locErr'}], formatter:'.actionButtonFormatter.enableRent'}"/>
+          </HBox>
+          <HBox visible="{= !!!${/reservation}}" id="bikePanel" width="auto" alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMargin">
+            <Title text="{i18n>bike} {/selectedBike/id}" titleStyle="H2"/>
+            <Label text="{positions>/selectedAddress}" design="Bold"/>
+            <Button icon="sap-icon://fa/problem" type="Transparent" app:bikeId="{/selectedBike/id}" press="onReportPressed" />
+          </HBox>
+          <VBox visible="{= !!!${/reservation}}">
+            <HBox>
+              <TileContent size="S" footer="{i18n>distance}" unit="{path: 'positions>/route/distance', formatter: '.distanceFormatter.distanceUnit'}">
+                <content>
+                  <NumericContent value="{path: 'positions>/route/distance', formatter: '.distanceFormatter.distanceToBike'}" icon="sap-icon://map-2" />
+                </content>
+              </TileContent>
+              <TileContent footer="{i18n>duration}">
+                <content>
+                  <NumericContent truncateValueTo="5" value="{path: 'positions>/route/duration',formatter: '.timeFormatter.formatterH'}:{path: 'positions>/route/duration',formatter: '.timeFormatter.formatterM'}" icon="sap-icon://away" />
+                </content>
+              </TileContent>
+            </HBox>
+            <FlexBox justifyContent="SpaceAround" alignItems="Center" class="sapUiSmallMarginTopBottom">
+              <Button type="Emphasized" text="{i18n>reserve}" press="onReservePressed" width="150px" enabled="{parts:[{path: '/selectedBike'}, {path: 'positions>/locErr'}], formatter:'.actionButtonFormatter.enableReserve'}"/>
+              <Button type="Emphasized" text="{i18n>rent}" press="onBookPressed" width="150px" app:bikeId="{/selectedBike/id}" enabled="{parts:[{path: '/selectedBike'}, {path: 'positions>/locErr'}], formatter:'.actionButtonFormatter.enableRent'}"/>
+            </FlexBox>
+          </VBox>
+        </VBox>
+      </l:fixContent>
+      <l:flexContent>
+        <FlexBox renderType="Bare" height="100%" width="100%">
+          <vbm:GeoMap id="vbi" height="100%" width="100%" enableAnimation="true" initialZoom="15" initialPosition="8.677387;49.404794;0" navcontrolVisible="true">
+            <vbm:resources>
+              <vbm:Resource name="user_circle" src="../css/locateMe.png"></vbm:Resource>
+            </vbm:resources>
+            <vbm:vos>
+              <vbm:Spots items="{
+              path: '/bikes',
+              filters: [
+                {path: 'visible', operator: 'EQ', value1: true},
+                {path: 'booked', operator: 'NE', value1: true},
+                {path: 'functional', operator: 'EQ', value1: true}
+              ]
+              }" customProperties="{= ['unselected', 'status']}">
+                <vbm:items>
+                  <vbm:Spot position="{measures/lon};{measures/lat};0" scale="1;1;1" tooltip="{i18n>bike} {id}" icon="sap-icon://fa/bike" type="{path: '',formatter: '.formatter.bikeTypeFormatter'}" click="onBikePressed">
+                    <vbm:customData>
+                      <core:CustomData key='status' value='bike' />
+                      <core:CustomData key='unselected' value='{= ${selected} !== 1}' />
+                    </vbm:customData>
+                  </vbm:Spot>
+                </vbm:items>
+              </vbm:Spots>
+              <vbm:Spots customProperties="status">
+                <vbm:Spot position="{positions>/user/lon};{positions>/user/lat};0" image="user_circle" scale="0.2;0.2;0.2" alignment="0">
+                  <vbm:customData>
+                    <core:CustomData key='status' value='user' />
+                  </vbm:customData>
+                </vbm:Spot>
+              </vbm:Spots>
+              <vbm:Routes>
+                <vbm:Route linewidth="{= ${/selectedBike} || ${/reservation} ? 3 : 0}" position="{positions>/route/position}" end="0" start="1" color="rgba(92,186,230,1.0)" colorBorder="rgb(255,255,255)" hotDeltaColor="RHLSA(0,1,1,0.6)" />
+              </vbm:Routes>
+            </vbm:vos>
+          </vbm:GeoMap>
+          <Button class="floatingButton" icon="sap-icon://locate-me" press="onLocateMePressed"/>
+        </FlexBox>
+      </l:flexContent>
+    </l:FixFlex>
+  </Page>
+</mvc:View>

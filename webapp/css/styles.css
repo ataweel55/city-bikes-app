@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('webfonts/fontawesome-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.fa-icon .sapUiVbicluster-icon {
+  font-family: 'FontAwesome' !important;
+}
+
+.floatingButton {
+  position: fixed;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.floatingButton .sapMBtnDefault {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.cb-big {
+  font-size: 3rem;
+}

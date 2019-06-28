@@ -1,0 +1,97 @@
+<mvc:View
+	controllerName="com.sovanta.city_bikes.controller.HistoryDetail"
+	xmlns="sap.m"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:l="sap.ui.layout"
+  xmlns:viz="sap.viz.ui5.controls"
+  xmlns:vbm="sap.ui.vbm" height="100%" displayBlock="true">
+	<Page showHeader="false">
+    <l:FixFlex visible="true" fixFirst="false" class="fixFlexVertical">
+      <l:fixContent>
+				<VBox justifyContent="Buttom" class="sapUiSmallMarginBeginEnd sapUiMediumMarginTop">
+          <HBox width="100%" alignItems="Center" justifyContent="SpaceBetween">
+            <Title text="Trip {/trip/id}" titleStyle="H2"/>
+            <Title text="{path:'/trip/created_at', type: 'sap.ui.model.type.Date', formatOptions: {source: {pattern: 'yyyy-MM-ddTHH:mm:SS.sssZ'}, pattern: 'dd. MMM yyyy'}}" titleStyle="H2"/>
+					</HBox>
+          <Label visible="{= !!${/trip/fromAddress} &amp;&amp; !!${/trip/toAddress}}" text="{i18n>from} {/trip/fromAddress}" design="Bold" class="sapUiSmallMarginTop"/>
+					<Label visible="{= !!${/trip/fromAddress} &amp;&amp; !!${/trip/toAddress}}" text="{i18n>to} {/trip/toAddress}" design="Bold"/>
+					<l:Grid binding="{/trip}" class="sapUiSmallMarginTopBottom" hSpacing="0" defaultSpan="L1 M1 S6">
+						<l:content>
+						<VBox>
+							<HBox>
+								<core:Icon size="1.5rem" src="sap-icon://away" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<Label text="{i18n>duration}"/>
+                  <Text visible="{= ${duration}>=3600}" text="{path: 'duration',formatter: '.timeFormatter.formatterH'}:{path: 'duration',formatter: '.timeFormatter.formatterM'} {i18n>hrs}" />
+                  <Text visible="{= ${duration}&lt;3600}" text="{path: 'duration',formatter: '.timeFormatter.formatterM'}:{path: 'duration',formatter: '.timeFormatter.formatterS'} {i18n>min}" />
+								</VBox>
+							</HBox>
+
+						</VBox>
+						<VBox>
+							<HBox>
+								<core:Icon size="1.5rem" src="sap-icon://map-2" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<Label text="{i18n>distance}"/>
+                  <Text text="{path:'distance', formatter: '.distanceFormatter.distanceToBike'} {path:'distance', formatter: '.distanceFormatter.distanceUnit'}" />
+                </VBox>
+							</HBox>
+						</VBox>
+						<VBox>
+							<HBox>
+								<core:Icon size="1.5rem" src="sap-icon://fa/tacho" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<Label text="{i18n>averageSpeed}"/>
+									<Text text="{avgSpeed} km/h"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox>
+							<HBox>
+								<core:Icon size="1.5rem" src="sap-icon://competitor" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<Label text="{i18n>topSpeed}"/>
+									<Text text="{topSpeed} km/h"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox>
+							<HBox>
+								<core:Icon size="1.7rem" src="sap-icon://fa/fire" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<Label text="{i18n>calories}"/>
+									<Text text="{caloriesBurned} kcal"/>
+								</VBox>
+							</HBox>
+						</VBox>
+						<VBox>
+							<HBox>
+								<core:Icon size="1.5rem" src="sap-icon://fa/bike" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+								<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+									<Label text="{i18n>bike} ID"/>
+									<Text text="{bikeId}"/>
+								</VBox>
+							</HBox>
+						</VBox>
+					</l:content>
+				</l:Grid>
+				</VBox>
+      </l:fixContent>
+
+      <l:flexContent class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+        <vbm:GeoMap id="vbi" height="100%" width="100%" enableAnimation="true" initialZoom="15" initialPosition="8.677387;49.404794;0" disableZoom="true" disablePan="true">
+          <vbm:vos>
+            <vbm:Spots>
+              <vbm:Spot position="{/route/start}" alignment="0" icon="sap-icon://fa/startFlag" contentColor="rgb(255,255,255)"></vbm:Spot>
+              <vbm:Spot position="{/route/destination}" alignment="0" icon="sap-icon://fa/startFlag" contentColor="rgb(255,255,255)"></vbm:Spot>
+            </vbm:Spots>
+          </vbm:vos>
+          <vbm:Routes>
+            <vbm:Route position="{/route/positions}" end="0" start="0" color="rgba(92,186,230,1.0)" colorBorder="rgb(255,255,255)" hotDeltaColor="RHLSA(0,1,1,0.6)" />
+          </vbm:Routes>
+        </vbm:GeoMap>
+      </l:flexContent>
+    </l:FixFlex>
+  </Page>
+</mvc:View>

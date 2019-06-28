@@ -1,0 +1,48 @@
+{
+  "name": "CityBikes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test": "grunt lint && grunt test",
+    "start": "grunt serve",
+    "build": "grunt build",
+    "postinstall": "bower install",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bower": "^1.8.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-eslint": "^20.0.0",
+    "grunt-karma": "^1.0.0",
+    "grunt-openui5": "^0.12.0",
+    "grunt-prettier": "^0.4.0",
+    "husky": "^0.14.3",
+    "karma": "^1.5.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.1",
+    "karma-openui5": "~0.2.2",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-qunit": "^1.2.1",
+    "karma-sinon": "^1.0.5",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.9.2",
+    "qunitjs": "^2.0.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
+}

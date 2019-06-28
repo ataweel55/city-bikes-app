@@ -1,0 +1,16 @@
+<mvc:View controllerName="com.sovanta.city_bikes.controller.Login" 
+  xmlns="sap.m" 
+  xmlns:mvc="sap.ui.core.mvc">
+  <Page showHeader="false">
+    <VBox fitContainer="true" justifyContent="Center" alignItems="Center" alignContent="Center">
+      <items>
+        <Image
+          class = "sapUiTinyMarginBottom" src="img/logo.png" densityAware="false"></Image>
+        <Input id="email" required="required" value = "{/credentials/email}" type="Email" submit = "onLoginPress" placeholder="{i18n>enterEmail}"></Input>
+        <Input id="password" required="required" value = "{/credentials/password}" placeholder="{i18n>enterPassword}" type="Password" submit="onLoginPress"></Input>
+        <Button enabled="{= !${/submitted}}" width="200px" text="Login" press="onLoginPress"></Button>
+        <Link class = "sapUiSmallMarginTop" href="/register" text="{i18n>Register}"></Link>
+      </items>
+    </VBox>
+  </Page>
+</mvc:View>

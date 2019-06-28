@@ -1,0 +1,21 @@
+{
+	"env": {
+		"browser": true
+	},
+	"globals": {
+		"sap": true,
+		"jQuery": true
+	},
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error"
+  },
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 8
+    }
+}

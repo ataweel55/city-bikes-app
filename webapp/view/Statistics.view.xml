@@ -1,0 +1,106 @@
+<mvc:View controllerName="com.sovanta.city_bikes.controller.Statistics" 
+    xmlns:l="sap.ui.layout" 
+    xmlns:core="sap.ui.core" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:mc="sap.suite.ui.microchart">
+    <Page showHeader="false" visible="{= !!!${/trips} &amp;&amp; !${/isLoading}}">
+        <core:Fragment fragmentName="com.sovanta.city_bikes.view.NoData" type="XML" />
+    </Page>
+    <Page showHeader="false" visible="{= !!${/trips} &amp;&amp; !${/isLoading}}">
+        <Panel>
+            <headerToolbar>
+                <Toolbar height="3rem" class="sapUiSmallMarginBeginEnd sapUiTinyMarginTop">
+                    <Title text="{i18n>statisticsTitle} {/stats/numTrips} Trips" titleStyle="H2"/>
+                </Toolbar>
+            </headerToolbar>
+            <List binding="{/stats}" backgroundDesign="Transparent">
+                <CustomListItem>
+                    <HBox justifyContent="SpaceBetween" class="sapUiSmallMarginTopBottom sapUiSmallMarginBeginEnd">
+                        <VBox>
+                            <HBox>
+                                <core:Icon size="1.0rem" src="sap-icon://map-2" class="sapUiSmallMarginEnd" />
+                                <Title text="{i18n>distance}" titleStyle="H3"/>
+                            </HBox>
+                            <Text visible="{= !!${distance}}" text="{path: 'distance', formatter: '.distanceFormatter.distanceToBike'} {path: 'distance', formatter: '.distanceFormatter.distanceUnit'}" />
+                        </VBox>
+                        <mc:LineMicroChart size="Auto" leftTopLabel="{path: '/trips/distances', formatter: '.statisticsFormatter.returnLastElement'}" rightTopLabel="{path: '/trips/distances', formatter: '.statisticsFormatter.returnFirstElement'}" points="{
+						path: '/trips/distances',
+						templateShareable: true
+					}">
+                            <mc:LineMicroChartEmphasizedPoint x="{x}" y="{y}" show="true"/>
+                        </mc:LineMicroChart>
+                    </HBox>
+                </CustomListItem>
+                <CustomListItem>
+                    <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd">
+                        <VBox>
+                            <HBox>
+                                <core:Icon size="1.0rem" src="sap-icon://away" class="sapUiSmallMarginEnd" />
+                                <Title text="{i18n>duration}" titleStyle="H3"/>
+                            </HBox>
+                            <Text visible="{= !!${duration}}" text="{path: 'duration', formatter:'.timeFormatter.formatStatsH'} {i18n>hrs} {path: 'duration',formatter:'.timeFormatter.formatStatsM'} {i18n>min}" />
+                        </VBox>
+                        <mc:LineMicroChart size="Auto" leftTopLabel="{path: '/trips/durations', formatter: '.statisticsFormatter.returnLastElement'}" rightTopLabel="{path: '/trips/durations', formatter: '.statisticsFormatter.returnFirstElement'}" points="{
+						path: '/trips/durations',
+						templateShareable: true
+					}">
+                            <mc:LineMicroChartEmphasizedPoint x="{x}" y="{y}" show="true"/>
+                        </mc:LineMicroChart>
+                    </HBox>
+                </CustomListItem>
+                <CustomListItem>
+                    <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd">
+                        <VBox>
+                            <HBox>
+                                <core:Icon size="1.0rem" src="sap-icon://fa/tacho" class="sapUiSmallMarginEnd " />
+                                <Title text="{i18n>averageSpeed}" titleStyle="H3"/>
+                            </HBox>
+                            <Text visible="{= !!${avgSpeed}}" text="{avgSpeed} km/h"/>
+                        </VBox>
+                        <mc:LineMicroChart size="Auto" leftTopLabel="{path: '/trips/avgSpeeds', formatter: '.statisticsFormatter.returnLastElement'}" rightTopLabel="{path: '/trips/avgSpeeds', formatter: '.statisticsFormatter.returnFirstElement'}" points="{
+						path: '/trips/avgSpeeds',
+						templateShareable: true
+					}">
+                            <mc:LineMicroChartEmphasizedPoint x="{x}" y="{y}" show="true"/>
+                        </mc:LineMicroChart>
+                    </HBox>
+                </CustomListItem>
+                <CustomListItem>
+                    <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop sapUiSmallMarginBottom sapUiSmallMarginBeginEnd">
+                        <VBox>
+                            <HBox>
+                                <core:Icon size="1.0rem" src="sap-icon://competitor" class="sapUiSmallMarginEnd" />
+                                <Title text="{i18n>topSpeed}" titleStyle="H3"/>
+                            </HBox>
+                            <Text visible="{= !!${maxTopSpeed}}" text="{maxTopSpeed} km/h"/>
+                        </VBox>
+                        <mc:LineMicroChart size="Auto" leftTopLabel="{path: '/trips/topSpeeds', formatter: '.statisticsFormatter.returnLastElement'}" rightTopLabel="{path: '/trips/topSpeeds', formatter: '.statisticsFormatter.returnFirstElement'}" points="{
+						path: '/trips/topSpeeds',
+						templateShareable: true
+					}">
+                            <mc:LineMicroChartEmphasizedPoint x="{x}" y="{y}" show="true"/>
+                        </mc:LineMicroChart>
+                    </HBox>
+                </CustomListItem>
+                <CustomListItem>
+                    <HBox justifyContent="SpaceBetween" class="sapUiMediumMarginTop sapUiSmallMarginBeginEnd">
+                        <VBox>
+                            <HBox>
+                                <core:Icon size="1.0rem" src="sap-icon://fa/fire" class="sapUiSmallMarginEnd" />
+                                <Title text="{i18n>calories}" titleStyle="H3"/>
+                            </HBox>
+                            <Text visible="{= !!${caloriesBurned}}" text="{caloriesBurned} kcal"/>
+                        </VBox>
+                        <mc:LineMicroChart size="Auto" leftTopLabel="{path: '/trips/calories', formatter: '.statisticsFormatter.returnLastElement'}" rightTopLabel="{path: '/trips/calories', formatter: '.statisticsFormatter.returnFirstElement'}" points="{
+						path: '/trips/calories',
+						templateShareable: true
+					}">
+                            <mc:LineMicroChartEmphasizedPoint x="{x}" y="{y}" show="true"/>
+                        </mc:LineMicroChart>
+                    </HBox>
+                </CustomListItem>
+            </List>
+        </Panel>
+    </Page>
+</mvc:View>
